@@ -1,10 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function RootLayout() {
   return (
-    <div>
+    <>
+    
+      <Link>Home</Link>
+      <Link>Data</Link>
       <Outlet />
-      <p>I AM PART OF THE PROBLEM</p>
-    </div>
+    </>
   );
 }
