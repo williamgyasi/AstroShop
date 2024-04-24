@@ -1,7 +1,6 @@
-
 function HomePage() {
   return (
-    <div  style={{backgroundColor:"red"}}>
+    <div style={{ backgroundColor: "red" }}>
       <div sty>
         <p>React Home</p>
       </div>
