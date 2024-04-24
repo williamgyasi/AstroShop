@@ -1,12 +1,12 @@
 
-function Home() {
+function HomePage() {
   return (
-    <div >
-      <div>
+    <div  style={{backgroundColor:"red"}}>
+      <div sty>
         <p>React Home</p>
       </div>
     </div>
   );
 }
 
-export default Home;
+export default HomePage;
