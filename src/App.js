@@ -1,14 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { HomePage, RegisterPage, LoginPage } from "./Pages";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
 
 function App() {
-  return (
-    <div >
-      <div>
-        <p>React App</p>
-      </div>
-    </div>
-  );
+  const router = createBrowserRouter(createRoutesFromElements(<Route />));
+  return <RouterProvider router={router} />;
 }
 
 export default App;
