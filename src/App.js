@@ -6,13 +6,14 @@ import {
   Route,
 } from "react-router-dom";
 import RootLayout from "./Routes/RootLayout";
+import { catLoader } from "./Pages/LoginPage/dataLoader";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route element={<RootLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} loader={catLoader} />
         <Route path="/register" element={<RegisterPage />} />
       </Route>
     )

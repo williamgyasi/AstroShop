@@ -1,7 +1,7 @@
 function HomePage() {
   return (
     <div style={{ backgroundColor: "red", height:"100vh" }}>
-      <div sty>
+      <div >
         <p>React Home</p>
       </div>
     </div>
