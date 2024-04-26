@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
+import Header from "../Components/Header";
 
 export default function RootLayout() {
   return (
-    <div>
-      <Link to={"/login"}>Login</Link>
-      <Link to={"/register"}>Register</Link>
+    <>
+      <Header />
       <Outlet />
-    </div>
+    </>
   );
 }
