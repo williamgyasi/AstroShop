@@ -11,8 +11,7 @@ function HomePage() {
 
   return (
     <Box sx={{ backgroundColor: "red" }}>
-      
-      <Typography>I am the king of the world</Typography>
+      <Typography variant="h3">This is the homepage</Typography>
     </Box>
   );
 }
