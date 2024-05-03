@@ -13,7 +13,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} loader={catLoader} />
         <Route path="/register" element={<RegisterPage />} />
       </Route>
     )
