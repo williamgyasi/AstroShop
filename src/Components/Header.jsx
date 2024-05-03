@@ -1,11 +1,20 @@
-import { AppBar, Container, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import NavigationBar from "./NavigationBar";
+import { Container } from "@mui/material";
+import { globalColor } from "../theme";
 
-export default function Header() {
+function Header() {
   return (
-    <Container>
+    <Container
+      maxWidth
+      sx={{
+        width: "100%",
+        // height: "100vh",
+      }}
+    >
       <NavigationBar />
     </Container>
   );
 }
+
+export default Header;
