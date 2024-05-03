@@ -1,12 +1,19 @@
-import { Box, Typography } from "@mui/material";
+import { Grid3x3, MenuBookOutlined } from "@mui/icons-material";
+import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
+import PropTypes from "prop-types";
 
 function HomePage() {
+  const logoStyle = {
+    width: "50px",
+    height: "50px",
+    cursor: "pointer",
+  };
+
   return (
-    <div style={{ backgroundColor: "red", height: "100vh" }}>
-      <Box>
-        <Typography>React Home</Typography>
-      </Box>
-    </div>
+    <Box sx={{ backgroundColor: "red" }}>
+      
+      <Typography>I am the king of the world</Typography>
+    </Box>
   );
 }
 
