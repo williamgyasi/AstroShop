@@ -13,10 +13,6 @@ function HomePage() {
     <Box
       sx={{
         width: "100%",
-        backgroundImage: "linear-gradient(180deg, #CEE5FD, #FFF)",
-        // backgroundColor: "red",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
         pt: { xs: 10, sm: 20 },
         pb: { xs: 8, sm: 12 },
       }}
