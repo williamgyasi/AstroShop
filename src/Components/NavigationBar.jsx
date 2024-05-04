@@ -23,8 +23,9 @@ function NavigationBar() {
       <Toolbar
         variant="regular"
         sx={{
-          backgroundColor: "rgba(255, 255, 255, 0.4)",
+          // backgroundColor: "rgba(233, 230, 230, 0.4)",
           // backgroundColor: "red",
+          backgroundImage: "linear-gradient(180deg, #CEE5FD, #ebe6e6)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",

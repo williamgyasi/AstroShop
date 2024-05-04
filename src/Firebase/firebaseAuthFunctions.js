@@ -1,6 +1,19 @@
-import { logEvent } from "firebase/analytics"
-import { analytics } from "./getFirebase"
+import { logEvent } from "firebase/analytics";
+import { analytics, firebaseAuth } from "./getFirebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export const getAnalytics =()=>{
-    logEvent(analytics,'notification_recieved')
-}
+export const REGISTER__CLIENT = (email, password) => {
+  createUserWithEmailAndPassword(firebaseAuth, email, password)
+    .then((userCredential) => {
+      // Signed up
+      const user = userCredential.user;
+      console.log(user);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // ..
+    });
+};
