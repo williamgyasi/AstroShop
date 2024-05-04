@@ -13,7 +13,7 @@ function HomePage() {
     <Box
       sx={{
         width: "100%",
-        backgroundColor: "red",
+        backgroundColor: "secondary.main",
       }}
     >
       <Typography variant="h3">This is the homepage</Typography>

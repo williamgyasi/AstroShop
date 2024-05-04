@@ -2,11 +2,13 @@ import React from "react";
 import NavigationBar from "./NavigationBar";
 import { Container, Typography } from "@mui/material";
 import { globalColor } from "../theme";
+import { getAnalytics } from "../Firebase/firebaseAuthFunctions";
 
 function Header() {
+  getAnalytics()
   return (
     <Container
-      maxWidth
+      maxWidth="lg"
       disableGutters
       sx={{
         width: "100%",
