@@ -84,7 +84,7 @@ function NavigationBar() {
             href="/register"
           >
             Register
-          </Button>
+          </Button> 
           <Button
             color="primary"
             variant="contained"
