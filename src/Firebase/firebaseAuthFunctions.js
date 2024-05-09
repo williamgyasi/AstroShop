@@ -23,10 +23,14 @@ export const REGISTER__CLIENT = async (email, password) => {
   return response;
 };
 
+export const LOG_OUT_CLIENT = async () => {
+  const response = firebaseAuth.signOut();
+  return response;
+};
+
 export const AUTH_STATE_LISTENER = () => {
   onAuthStateChanged(firebaseAuth, (user) => {
     if (user) {
-     
       const uid = user.uid;
       // ...
     } else {
