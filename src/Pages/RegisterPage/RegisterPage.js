@@ -13,6 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { EmailOutlined, LinkOffOutlined } from "@mui/icons-material";
 
 function CustomTabPanel(props) {
@@ -53,14 +54,15 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [tabValue, setTabValue] = useState(0);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!errorControl.emailHasError) {
-      REGISTER__CLIENT(userData.email, userData.password);
-      event.target.reset();
-      setUserData({ email: "", password: "" });
-    }
+    setLoading(true);
+    let response = await REGISTER__CLIENT(userData.email, userData.password);
+    console.log(response)
+    // event.target.reset();
+
+    // setUserData({ email: "", password: "" });
   };
 
   const handleOnChange = (event) => {
@@ -177,14 +179,16 @@ const Register = () => {
                 autoFocus
               />
 
-              <Button
+              <LoadingButton
+                loading={loading}
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mb: 2 }}
               >
+                {" "}
                 Sign In
-              </Button>
+              </LoadingButton>
             </Box>
           </CustomTabPanel>
 
@@ -227,14 +231,15 @@ const Register = () => {
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
                 />
-                <Button
+                <LoadingButton
+                  loading={loading}
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
                   Sign In
-                </Button>
+                </LoadingButton>
                 <Grid container justifyContent={"space-between"}>
                   <Grid item>
                     <Link href="#" variant="body2">
