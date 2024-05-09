@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { EmailOutlined, LinkOffOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,6 +58,7 @@ const Register = () => {
   const [tabValue, setTabValue] = useState(0);
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
 
   const handleSnackBarClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -69,14 +71,21 @@ const Register = () => {
     event.preventDefault();
 
     setLoading(true);
-    REGISTER__CLIENT(userData.email, userData.password).then((value) => {
-      if (value?.accessToken) {
-        setCurrentUser(value);
-        setLoading(false);
-        setOpenSnackBar(true);
-        setUserData({ email: "", password: "" });
-      }
-    });
+    REGISTER__CLIENT(userData.email, userData.password)
+      .then((value) => {
+        if (value?.accessToken) {
+          setCurrentUser(value);
+
+          setOpenSnackBar(true);
+          setUserData({ email: "", password: "" });
+        }
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+          navigate("/");
+        }, 5000);
+      });
 
     // event.target.reset();
 
