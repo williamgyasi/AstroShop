@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { REGISTER__CLIENT } from "../../Firebase/firebaseAuthFunctions";
 import {
+  Alert,
   Box,
   Button,
   ButtonGroup,
@@ -8,6 +9,7 @@ import {
   FormControlLabel,
   Grid,
   Link,
+  Snackbar,
   Tab,
   Tabs,
   TextField,
@@ -53,13 +55,29 @@ const Register = () => {
   });
   const [loading, setLoading] = useState(false);
   const [tabValue, setTabValue] = useState(0);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+
+  const handleSnackBarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackBar(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     setLoading(true);
-    let response = await REGISTER__CLIENT(userData.email, userData.password);
-    console.log(response)
+    REGISTER__CLIENT(userData.email, userData.password).then((value) => {
+      if (value?.accessToken) {
+        setCurrentUser(value);
+        setLoading(false);
+        setOpenSnackBar(true);
+        setUserData({ email: "", password: "" });
+      }
+    });
+
     // event.target.reset();
 
     // setUserData({ email: "", password: "" });
@@ -257,6 +275,22 @@ const Register = () => {
           </CustomTabPanel>
         </Box>
       </Grid>
+      <Snackbar
+        open={openSnackBar}
+        autoHideDuration={6000}
+        onClose={handleSnackBarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleSnackBarClose}
+          severity="success"
+          variant="filled"
+          sx={{ mt: 3 }}
+        >
+          You have been successfully signed in
+          {currentUser?.email}
+        </Alert>
+      </Snackbar>
     </Grid>
   );
 };
