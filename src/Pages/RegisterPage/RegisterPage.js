@@ -75,7 +75,6 @@ const Register = () => {
       .then((value) => {
         if (value?.accessToken) {
           setCurrentUser(value);
-
           setOpenSnackBar(true);
           setUserData({ email: "", password: "" });
         }
