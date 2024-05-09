@@ -1,6 +1,9 @@
 import { logEvent } from "firebase/analytics";
 import { analytics, firebaseAuth } from "./getFirebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 export const REGISTER__CLIENT = async (email, password) => {
   // const user = "i am the cat";
@@ -18,4 +21,17 @@ export const REGISTER__CLIENT = async (email, password) => {
       // ..
     });
   return response;
+};
+
+export const AUTH_STATE_LISTENER = () => {
+  onAuthStateChanged(firebaseAuth, (user) => {
+    if (user) {
+     
+      const uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
 };
