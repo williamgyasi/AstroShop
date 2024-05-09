@@ -35,6 +35,7 @@ function NavigationBar() {
           maxHeight: 40,
           width: "90%",
           margin: "0 auto",
+          zIndex:10,
 
           // border: "1px solid",
           // borderColor: "divider",
