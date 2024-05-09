@@ -21,13 +21,12 @@ const Register = () => {
     password: "",
   });
   const [errorControl, setErrorControl] = useState({
-    emailError: false,
+    emailHasError: false,
     emailErrorMessage: "",
-    passwordError: false,
+    passwordHasError: false,
     passwordErrorMessage: "",
   });
 
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Acr");
@@ -49,15 +48,18 @@ const Register = () => {
       [event.target.name]: event.target.value,
     }));
 
-    
-
     checkErrors();
   };
 
   const checkErrors = () => {
-    
+    const regex =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regex.test(userData.email)) {
+      setErrorControl(prevErrorControl=>({...prevErrorControl,[errorControl.emailError]:true}))
+    } else {
+      console.log("invalid input");
+    }
   };
-
 
   return (
     <Grid
@@ -117,6 +119,9 @@ const Register = () => {
               value={userData.email}
               onChange={handleOnChange}
               id="email"
+              color={errorControl.emailError?"success":"primary"}
+              error={errorControl.emailError}
+              helperText={errorControl.emailErrorMessage}
               label="Email Address"
               name="email"
               autoComplete="email"
